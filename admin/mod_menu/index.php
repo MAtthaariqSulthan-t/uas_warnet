@@ -8,7 +8,6 @@ if (!isset($_GET['action'])) {
 			<th>Kode Menu</th>
 			<th>Nama menu</th>
 			<th>Link</th>
-			<th>Icon</th>
 			<th>Action</th>
 		</tr>
 		<?php
@@ -19,7 +18,6 @@ if (!isset($_GET['action'])) {
 				<td><?= $q['kode_menu']; ?></td>
 				<td><?= $q['nmmenu']; ?></td>
 				<td><?= $q['link']; ?></td>
-				<td><?= $q['icon']; ?></td>
 				<td><a href="?modul=mod_menu&action=edit&id=<?= $q['idmenu']; ?>" class="btn btn-xs btn-primary"><i class="bi bi-pencil-square"></i> Edit</a>
 					<a href="?modul=mod_menu&action=delete&id=<?= $q['idmenu']; ?>" class="btn btn-xs btn-danger"><i class="bi bi-trash"></i> Delete</a>
 				</td>
@@ -37,14 +35,14 @@ if (!isset($_GET['action'])) {
 	);
 	$cekkode = mysqli_fetch_array($query_cekkode);
 	$kodeakhir = $cekkode['kode_menu'];
-	// echo $kodeakhir . "<br>";
+	 //echo $kodeakhir . "<br>";
 	$no_urutakhir = substr($kodeakhir, 5);
-	// echo $no_urutakhir . "<br>";
+	 //echo $no_urutakhir . "<br>";
 	$th_akhir = substr($kodeakhir, 1, 4);
 	$th_sekarang = date("Y");
-	// echo $th_akhir . " : " . $th_sekarang . "<br>";
+	 //echo $th_akhir . " : " . $th_sekarang . "<br>";
 	if ($th_akhir == $th_sekarang) {
-		//$nourut_baru = $no_urutakhir + 1;
+		$nourut_baru = $no_urutakhir + 1;
 
 		if ($no_urutakhir < 9) {
 			$nourut_baru = "00" . ($no_urutakhir + 1);
@@ -82,12 +80,6 @@ if (!isset($_GET['action'])) {
 				</div>
 			</div>
 			<div class="row pt-3">
-				<label class="col-md-2">Icon</label>
-				<div class="col-md-5">
-					<input type="text" name="icon" id="icon" class="form-control">
-				</div>
-			</div>
-			<div class="row pt-3">
 				<label class="col-md-2"></label>
 				<div class="col-md-5">
 					<button type="submit" class="btn btn-primary">Simpan</button>
@@ -115,12 +107,6 @@ if (!isset($_GET['action'])) {
 				<label class="col-md-2">Link</label>
 				<div class="col-md-5">
 					<input type="text" class="form-control" name="link" value="<?= $dt['link']; ?>">
-				</div>
-			</div>
-			<div class="row pt-3">
-				<label class="col-md-2">Icon</label>
-				<div class="col-md-5">
-					<input type="text" class="form-control" name="icon" value="<?= $dt['icon']; ?>">
 				</div>
 			</div>
 			<div class="row pt-3">

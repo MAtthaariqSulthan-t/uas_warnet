@@ -14,7 +14,7 @@ if(isset($_POST['btnlogin'])){
 		$_SESSION['namauser_log'] = $data['nama'];
 		header("Location: ".MAIN_URL."/home.php?page=bill");	
 	}else{
-		header("Location: ");
+		header("Location: ".MAIN_URL."/index.php");
 	}
 }
 ?>

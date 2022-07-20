@@ -49,15 +49,15 @@
   padding: 2px;
 }
 .bgcardbody {
-  background: #ffc5a4 !important;
+  background: #7269ee !important;
   padding: 1px !important;
 }
 .harga {
-  color: #aa4208;
+  color: #e0d74d;
 }
 .btndetail {
-  background: #ff8743;
-  border: 3px solid #ff8743;
+  background: #021029;
+  border: 3px solid #140744;
   box-sizing: border-box;
   color: white;
   text-align: center;

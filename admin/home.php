@@ -47,7 +47,8 @@ security_login();
 			<a class="navbar-brand text-white">Navbar</a>
 			<form class="d-flex">
 				<input class="form-control me-2" type="text" readonly value="<?= $_SESSION['namauser_log']; ?>">
-				<a href="logout.php" class="btn btn-warning text-white"> Logout</a>
+				<a href="logout.php" class="btn btn-warning text-white me-2"> Logout</a>
+				<a href="../home.php?page=bill" class="btn btn-warning text-white"> Home</a>
 			</form>
 		</div>
 	</nav>
@@ -88,12 +89,5 @@ security_login();
 	</script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="../assets/proses.js"></script>
-	<script src="../assets/js/adit.js"></script>
 	<script src="../assets/js/sulthan.js"></script>
-	<script src="../assets/js/galang.js"></script>
-	<script src="../assets/js/ardi.js"></script>
-	<script src="../assets/js/agung.js"></script>
-	<script src="../assets/js/putra.js"></script>
-</body>
-
 </html>

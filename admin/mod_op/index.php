@@ -1,8 +1,8 @@
 <?php
-include_once("loginctrl.php");
+include_once("opCtrl.php");
 if (!isset($_GET['action'])) {
 ?>
-	<a href="?modul=mod_userlogin&action=add" class="btn btn-primary btn-xs mb-1">Tambah Data</a>
+	<a href="?modul=mod_op&action=add" class="btn btn-primary btn-xs mb-1">Tambah Data</a>
 	<table class="table table-bordered">
 		<tr>
 			<th>ID</th>
@@ -19,11 +19,11 @@ if (!isset($_GET['action'])) {
             <td><?=$list['idop']; ?></td>
             <td><?=$list['namaop']; ?></td>
             <td><?=$list['alamatop']; ?></td>
-            <td><?=$list['notlp']; ?></td>
+            <td><?=$list['notlpop']; ?></td>
             <td> 
-                <a href="?modul=mod_userlogin&action=edit&id=<?=$list['iduser']; ?>" class="btn btn-primary">
+                <a href="?modul=mod_op&action=edit&id=<?=$list['iduser']; ?>" class="btn btn-primary">
                         <i class="bi bi-pencil-square"></i>edit</a>
-                <a href="?modul=mod_userlogin&action=delete&id=<?=$list['iduser']; ?>" class="btn btn-danger">
+                <a href="?modul=mod_op&action=delete&id=<?=$list['iduser']; ?>" class="btn btn-danger">
                         <i class="bi bi-trash"></i>delete</a>
             </td>
         </tr>
@@ -32,110 +32,64 @@ if (!isset($_GET['action'])) {
 	<?php } else if (isset($_GET['action']) && ($_GET['action'] == "add" || $_GET['action'] == "edit")) {
         if($proses=="insert"){
     ?>
-	<form action="?modul=mod_userlogin&action=save" id="formuser" method="POST">
+	<form action="?modul=mod_op&action=save" id="formuser" method="POST">
         <div class="row">
-			<label class="col-md-3">username</label>
-			<div class="col-md-5">
-            <input type="hidden" name="proses" value="<?= $proses; ?>">
-            <input type="hidden" name="iduser" value="<?= $upiduser; ?>">
-				<input type="text" name="user" id="user" class="form-control" >
-			</div>
-		</div>
-		<div class="row">
 			<label class="col-md-3">Nama Lengkap</label>
 			<div class="col-md-5">
-				<input type="text" name="nama" id="nama" class="form-control" >
+            <input type="hidden" name="proses" value="<?= $proses; ?>">
+            <input type="hidden" name="idop" value="<?= $upidop; ?>">
+				<input type="text" name="namal" id="user" class="form-control" >
 			</div>
 		</div>
 		<div class="row">
-			<label class="col-md-3">Password</label>
+			<label class="col-md-3">Alamat</label>
 			<div class="col-md-5">
-				<input type="password" name="pass" id="pass" class="form-control" >
-			</div>
-		</div>
-        <div class="row">
-			<label class="col-md-3">Confirm Password</label>
-			<div class="col-md-5">
-				<input type="password" name="passkonfirm" id="passkonfirm" class="form-control" >
+				<input type="text" name="alamat" id="nama" class="form-control" >
 			</div>
 		</div>
 		<div class="row">
-			<label class="col-md-3">Is Active</label>
+			<label class="col-md-3">No.tlp</label>
 			<div class="col-md-5">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="isactive" id="isactive" value="1">
-                    <label class="form-check-label">
-                        Aktif
-                    </label>
-                    </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="isactive" id="isactive" value="0" >
-                    <label class="form-check-label" >
-                        Not Active
-                    </label>
-                    </div>
-                </div>
+				<input type="text" name="notlp" id="pass" class="form-control" >
+			</div>
 		</div>
         <div class="row pt-3">
                 <label class="col-md-3"></label>
                 <div class="col-md-5">
-                    <button type="button" id="btnsubmit" class="btn btn-primary" data-bs-toggle="modal">Simpan</button>
-                    <a href="home.php?modul=mod_userlogin"><button type="button" class="btn btn-warning">Kembali</button></a>
+                    <button type="submit " name="btnsimpan" id="btnsimpan" class="btn btn-primary">Simpan</button>
+                    <a href="home.php?modul=mod_op"><button type="button" class="btn btn-warning">Kembali</button></a>
                 </div>
             </div>
 	</form>
 <?php }else{ ?>
-    <form action="?modul=mod_userlogin&action=save" id="formuser" method="POST">
+    <form action="?modul=mod_op&action=save" id="formuser" method="POST">
         <?php if($proses=="update"){ ?>
         <div class="row">
-			<label class="col-md-3">username</label>
+			<label class="col-md-3">Nama Lengkap</label>
 			<div class="col-md-5">
             <input type="hidden" name="proses" value="<?= $proses; ?>">
-            <input type="hidden" name="iduser" value="<?= $upiduser; ?>">
-				<input type="text" name="user" id="user" class="form-control" value="<?= $upuser?>" readonly>
+            <input type="hidden" name="idop" value="<?= $upidop; ?>">
+				<input type="text" name="namal" id="user" class="form-control" value="<?= $upop?>" readonly>
 			</div>
 		</div>
         <?php } ?>
 		<div class="row">
-			<label class="col-md-3">nama  lengkap</label>
+			<label class="col-md-3">alamat</label>
 			<div class="col-md-5">
-				<input type="text" name="nama" id="nama" class="form-control" value="<?= $upnama?>">
+				<input type="text" name="alamat" id="nama" class="form-control" value="<?= $upalamat?>">
 			</div>
 		</div>
 		<div class="row">
-			<label class="col-md-3">password</label>
+			<label class="col-md-3">No.tlp</label>
 			<div class="col-md-5">
-				<input type="password" name="pass" id="pass" class="form-control" value="<?= $uppass?>">
+				<input type="text" name="notlp" id="pass" class="form-control" value="<?= $upnotlp?>">
 			</div>
-		</div>
-		<div class="row">
-			<label class="col-md-3">confirm password</label>
-			<div class="col-md-5">
-				<input type="password" name="passkonfirm" id="pass" class="form-control" value="<?= $uppass?>">
-			</div>
-		</div>
-		<div class="row">
-			<label class="col-md-3">is active</label>
-			<div class="col-md-5">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="isactive" id="isactive" value="1" <?=($dt['is_active'] == 1)?"checked" : "";?>>
-                    <label class="form-check-label">
-                        aktif
-                    </label>
-                    </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="isactive" id="isactive" value="0" <?=($dt['is_active'] == 0)?"checked" : "";?>>
-                    <label class="form-check-label" >
-                        tidak aktif
-                    </label>
-                    </div>
-                </div>
 		</div>
         <div class="row pt-3">
                 <label class="col-md-3"></label>
                 <div class="col-md-5">
-                    <button type="submit" name="btnsubmit" id="btnsubmit" class="btn btn-primary">Simpan</button>
-                    <a href="home.php?modul=mod_userlogin"><button type="button" class="btn btn-warning">Kembali</button></a>
+                    <<button type="submit" name="btnsimpan" id="btnsimpan" class="btn btn-primary">Simpan</button>
+                    <a href="home.php?modul=mod_op"><button type="button" class="btn btn-warning">Kembali</button></a>
                 </div>
             </div>
 	</form>

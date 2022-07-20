@@ -1,12 +1,13 @@
 <?php
-include_once("loginctrl.php");
+include_once("paketCtrl.php");
 if (!isset($_GET['action'])) {
 ?>
-	<a href="?modul=mod_userlogin&action=add" class="btn btn-primary btn-xs mb-1">Tambah Data</a>
+	<a href="?modul=mod_paket&action=add" class="btn btn-primary btn-xs mb-1">Tambah Data</a>
 	<table class="table table-bordered">
 		<tr>
 			<th>ID</th>
 			<th>Nama Paket</th>
+            <th>versi pc</th>
 			<th>harga</th>
 			<th>Action</th>
 		</tr>
@@ -17,11 +18,12 @@ if (!isset($_GET['action'])) {
         <tr>
             <td><?=$list['idpaket']; ?></td>
             <td><?=$list['nmpaket']; ?></td>
+            <td><?=$list['id_pc']; ?></td>
             <td><?=$list['harga']; ?></td>
             <td> 
-                <a href="?modul=mod_userlogin&action=edit&id=<?=$list['iduser']; ?>" class="btn btn-primary">
+                <a href="?modul=mod_paket&action=edit&id=<?=$list['iduser']; ?>" class="btn btn-primary">
                         <i class="bi bi-pencil-square"></i>edit</a>
-                <a href="?modul=mod_userlogin&action=delete&id=<?=$list['iduser']; ?>" class="btn btn-danger">
+                <a href="?modul=mod_paket&action=delete&id=<?=$list['iduser']; ?>" class="btn btn-danger">
                         <i class="bi bi-trash"></i>delete</a>
             </td>
         </tr>
@@ -30,50 +32,33 @@ if (!isset($_GET['action'])) {
 	<?php } else if (isset($_GET['action']) && ($_GET['action'] == "add" || $_GET['action'] == "edit")) {
         if($proses=="insert"){
     ?>
-	<form action="?modul=mod_userlogin&action=save" id="formuser" method="POST">
+	<form action="?modul=mod_paket&action=save" id="formuser" method="POST">
         <div class="row">
-			<label class="col-md-3">username</label>
+			<label class="col-md-3">Nama Paket</label>
 			<div class="col-md-5">
             <input type="hidden" name="proses" value="<?= $proses; ?>">
-            <input type="hidden" name="iduser" value="<?= $upiduser; ?>">
-				<input type="text" name="user" id="user" class="form-control" >
+            <input type="hidden" name="idpaket" value="<?= $upidpaket; ?>">
+				<input type="text" name="nmpaket" id="user" class="form-control" >
 			</div>
 		</div>
 		<div class="row">
-			<label class="col-md-3">Nama Lengkap</label>
+			<label class="col-md-3">Versi PC</label>
 			<div class="col-md-5">
-				<input type="text" name="nama" id="nama" class="form-control" >
+				<input type="text" name="versipc" id="nama" class="form-control" >
 			</div>
 		</div>
 		<div class="row">
-			<label class="col-md-3">Password</label>
+			<label class="col-md-3">Nama Paket</label>
 			<div class="col-md-5">
-				<input type="password" name="pass" id="pass" class="form-control" >
+				<input type="text" name="nmpaket" id="pass" class="form-control" >
 			</div>
 		</div>
         <div class="row">
-			<label class="col-md-3">Confirm Password</label>
+			<label class="col-md-3">Harga</label>
 			<div class="col-md-5">
-				<input type="password" name="passkonfirm" id="passkonfirm" class="form-control" >
+				<input type="text" name="harga" id="passkonfirm" class="form-control" >
 			</div>
-		</div>
-		<div class="row">
-			<label class="col-md-3">Is Active</label>
-			<div class="col-md-5">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="isactive" id="isactive" value="1">
-                    <label class="form-check-label">
-                        Aktif
-                    </label>
-                    </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="isactive" id="isactive" value="0" >
-                    <label class="form-check-label" >
-                        Not Active
-                    </label>
-                    </div>
-                </div>
-		</div>
+		</div>  
         <div class="row pt-3">
                 <label class="col-md-3"></label>
                 <div class="col-md-5">

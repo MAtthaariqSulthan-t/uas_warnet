@@ -27,7 +27,7 @@ security_login();
 			<a class="navbar-brand text-white">Navbar</a>
 			<form class="d-flex">
 				<input class="form-control me-2" type="text" readonly value="<?= $_SESSION['namauser_log']; ?>">
-				<a href="logout.php" class="btn btn-warning text-white me-2"> Logout</a>
+				<a href="admin/logout.php" class="btn btn-warning text-white me-2"> Logout</a>
 				<a href="admin/home.php" class="btn btn-warning text-white"> Admin</a>
 			</form>
 		</div>
